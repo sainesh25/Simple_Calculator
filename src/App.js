@@ -19,31 +19,43 @@ function App(props) {
         });
     }
 
-    console.log(props);
+    let number1 = input.firstInput;
+    let number2 = input.secondInput;
 
-    // const [operation, setOperation] = useState({
-    //     add: +input.firstInput + +input.secondInput,
-    //     sub: +input.firstInput - +input.secondInput,
-    //     mul: +input.firstInput * +input.secondInput,
-    //     div: +input.firstInput / +input.secondInput,
-    // });
+
+    const [answer, setAnswer] = useState('');
 
     const handleAdd = () => {
-        console.log(+input.firstInput + +input.secondInput);
-            
+        let answer_of_operation = +number1 + +number2
+        setAnswer(`Addition of ${number1} and ${number2} is ${answer_of_operation}`);
+    }
+
+    const handleSub = () => {
+        let answer_of_operation = +number1 - +number2
+        setAnswer(`Addition of ${number1} and ${number2} is ${answer_of_operation}`);
+    }
+
+    const handleMul = () => {
+        let answer_of_operation = +number1 * +number2
+        setAnswer(`Addition of ${number1} and ${number2} is ${answer_of_operation}`);
+    }
+
+    const handleDiv = () => {
+        let answer_of_operation = +number1 / +number2
+        setAnswer(`Addition of ${number1} and ${number2} is ${answer_of_operation}`);
     }
 
 
-    
+
     return (
         <div className="App">
             <Heading>Simple Calculator</Heading>
             <Input placeholder='Enter no 1' name='firstInput' value={input.firstInput} onchange={handleChange} />
             <Input placeholder='Enter no 2' name='secondInput' value={input.secondInput} onchange={handleChange} />
             <Button onclick={handleAdd}>Add</Button>
-            <Button >Subtract</Button>
-            <Button >Divide</Button>
-            <Button >Multiply</Button>
+            <Button onclick={handleSub}>Subtract</Button>
+            <Button onclick={handleDiv}>Divide</Button>
+            <Button onclick={handleMul}>Multiply</Button>
             {/* <Button number1={input.firstInput} number2={input.secondInput} >Add</Button>
             <Button number1={input.firstInput} number2={input.secondInput} >Subtract</Button>
             <Button number1={input.firstInput} number2={input.secondInput} >Divide</Button>
