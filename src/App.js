@@ -3,8 +3,9 @@ import './App.css';
 import Button from './components/Button/Button';
 import Heading from './components/Heading/Heading';
 import Input from './components/Input/Input';
+import Answer from './components/Answer/Answer';
 
-function App(props) {
+function App() {
 
     const [input, setInput] = useState({
         firstInput: '',
@@ -32,17 +33,17 @@ function App(props) {
 
     const handleSub = () => {
         let answer_of_operation = +number1 - +number2
-        setAnswer(`Addition of ${number1} and ${number2} is ${answer_of_operation}`);
+        setAnswer(`Subtraction of ${number1} and ${number2} is ${answer_of_operation}`);
     }
 
     const handleMul = () => {
         let answer_of_operation = +number1 * +number2
-        setAnswer(`Addition of ${number1} and ${number2} is ${answer_of_operation}`);
+        setAnswer(`Multiplication of ${number1} and ${number2} is ${answer_of_operation}`);
     }
-
+    
     const handleDiv = () => {
         let answer_of_operation = +number1 / +number2
-        setAnswer(`Addition of ${number1} and ${number2} is ${answer_of_operation}`);
+        setAnswer(`Dividation of ${number1} and ${number2} is ${answer_of_operation}`);
     }
 
 
@@ -56,11 +57,7 @@ function App(props) {
             <Button onclick={handleSub}>Subtract</Button>
             <Button onclick={handleDiv}>Divide</Button>
             <Button onclick={handleMul}>Multiply</Button>
-            {/* <Button number1={input.firstInput} number2={input.secondInput} >Add</Button>
-            <Button number1={input.firstInput} number2={input.secondInput} >Subtract</Button>
-            <Button number1={input.firstInput} number2={input.secondInput} >Divide</Button>
-            <Button number1={input.firstInput} number2={input.secondInput} >Multiply</Button> */}
-            <p></p>
+            <Answer>{answer}</Answer>
         </div>
     );
 }
