@@ -9,82 +9,113 @@ function App() {
 
     const [input, setInput] = useState({
         firstInput: '',
-        secondInput: '',
+        answerBar: ''
     });
 
 
     const handleChange = (e) => {
         setInput({
             ...input,
-            [e.target.name]: e.target.value,
+            [e.target.name]: eval(e.target.value),
         });
     }
 
-    let number1 = input.firstInput;
-    let number2 = input.secondInput;
+    let operation = input.firstInput;
+    console.log(operation);
 
-
-    const [answer, setAnswer] = useState('');
-
-    const handleAdd = () => {
-        let answer_of_operation = +number1 + +number2
-        setAnswer(`Addition of ${number1} and ${number2} is ${answer_of_operation}`);
-        setInput({
-            ...input,
-            firstInput: '',
-            secondInput: '',
-        });
-    }
-
-    const handleSub = () => {
-        let answer_of_operation = +number1 - +number2
-        setAnswer(`Subtraction of ${number1} and ${number2} is ${answer_of_operation}`);
-    }
-
-    const handleMul = () => {
-        let answer_of_operation = +number1 * +number2
-        setAnswer(`Multiplication of ${number1} and ${number2} is ${answer_of_operation}`);
-    }
-
-    const handleDiv = () => {
-        let answer_of_operation = +number1 / +number2
-        setAnswer(`Dividation of ${number1} and ${number2} is ${answer_of_operation}`);
-    }
 
     const handleInput = (e) => {
-        setInput({
-            ...input,
-            [e.target.name]: e.target.value
-        })
-        console.log(e.target.value);
+        switch (e.target.value) {
+            case '1':
+                setInput(input => eval({ firstInput: input.firstInput + e.target.value}));
+                break;
+            case '2':
+                setInput(input => eval({ firstInput: input.firstInput + e.target.value}));
+                break;
+            case '3':
+                setInput(input => eval({ firstInput: input.firstInput + e.target.value}));
+                break;
+            case '4':
+                setInput(input => eval({ firstInput: input.firstInput + e.target.value}));
+                break;
+            case '5':
+                setInput(input => eval({ firstInput: input.firstInput + e.target.value}));
+                break;
+            case '6':
+                setInput(input => eval({ firstInput: input.firstInput + e.target.value}));
+                break;
+            case '7':
+                setInput(input => eval({ firstInput: input.firstInput + e.target.value}));
+                break;
+            case '8':
+                setInput(input => eval({ firstInput: input.firstInput + e.target.value}));
+                break;
+            case '9':
+                setInput(input => eval({ firstInput: input.firstInput + e.target.value}));
+                break;
+            case '0':
+                setInput(input => eval({ firstInput: input.firstInput + e.target.value}));
+                break;
+            case '+':
+                if(operation == ''){
+                    setInput({...input, firstInput: input.firstInput});
+                }else{
+
+                    setInput(input => eval({ firstInput: input.firstInput + e.target.value}));
+                }
+                break;
+            case '*':
+                setInput(input => eval({ firstInput: input.firstInput + e.target.value}));
+                break;
+            case '/':
+                setInput(input => eval({ firstInput: input.firstInput + e.target.value}));
+                break;
+            case '-':
+                setInput(input => eval({ firstInput: input.firstInput + e.target.value}));
+                break;
+            case '=':
+                setInput({...input, firstInput:'' ,answerBar: eval(input.firstInput)});
+                // setInput({...input, firstInput:'' , })
+                break;
+            case 'clear':
+                setInput({...input, firstInput: '', answerBar: ''});
+                break;
+                
+            default:
+                break;
+        }
     }
 
+
+    
 
     return (
         <div className="App">
             <Heading>Simple Calculator</Heading>
-            <Input placeholder='Enter no 1' name='firstInput' value={input.firstInput} onchange={handleChange} />
-            <Input placeholder='Enter no 2' name='secondInput' value={input.secondInput} onchange={handleChange} />
-            <Button onclick={handleAdd}>Add</Button>
-            <Button onclick={handleSub}>Subtract</Button>
-            <Button onclick={handleDiv}>Divide</Button>
-            <Button onclick={handleMul}>Multiply</Button>
+            <Input placeholder='Enter no 1' name='firstInput' value={operation} onchange={handleChange} />
+            <Input placeholder='Answer' name='answerBar' value={input.answerBar} />
+            <Button onclick={handleInput} name='add' value='+'>+</Button>
+            <Button onclick={handleInput} name='divide' value='/'>/</Button>
+            <Button onclick={handleInput} name='multiply' value='*'>*</Button>
+            <Button onclick={handleInput} name='subtract' value='-'>-</Button>
+            <Button onclick={handleInput} name='equals' value='='>=</Button>
+            <Button onclick={handleInput} name='clear' value='clear'>C</Button>
 
             <div >
 
                 <Button onclick={handleInput} name='0' value='0'>0</Button>
                 <Button onclick={handleInput} name='1' value='1'>1</Button>
                 <Button onclick={handleInput} name='2' value='2'>2</Button>
-                <Button onclick={handleChange} name='3' value='3'>3</Button>
-                <Button onclick={handleAdd}>4</Button>
-                <Button onclick={handleSub}>5</Button>
-                <Button onclick={handleDiv}>6</Button>
-                <Button onclick={handleMul}>7</Button>
-                <Button onclick={handleMul}>8</Button>
-                <Button onclick={handleMul}>9</Button>
+                <Button onclick={handleInput} name='3' value='3'>3</Button>
+                <Button onclick={handleInput} name='4' value='4'>4</Button>
+                <Button onclick={handleInput} name='5' value='5'>5</Button>
+                <Button onclick={handleInput} name='6' value='6'>6</Button>
+                <Button onclick={handleInput} name='7' value='7'>7</Button>
+                <Button onclick={handleInput} name='8' value='8'>8</Button>
+                <Button onclick={handleInput} name='9' value='9'>9</Button>
             </div>
 
-            <Answer>{answer}</Answer>
+            <Answer></Answer>
         </div>
     );
 }
