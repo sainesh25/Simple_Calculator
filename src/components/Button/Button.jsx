@@ -4,6 +4,6 @@ export default function Button(props) {
 
 
     return (
-        <button onClick={(e) => {props.onclick(e)}} value={props.value}>{props.children}</button>
+        <button className={props.className} onClick={(e) => {props.onclick(e)}} value={props.value}>{props.children}</button>
     )
 }
